@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Book a test ride at BGSW MOTO-TORQUE.">
+  <title>Book a Test Ride | BGSW MOTO-TORQUE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap">
+  <link rel="stylesheet" href="./assets/css/variables.css">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/layout.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/pages/booking.css">
+  <script type="module" src="./assets/js/pages/booking.page.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="BGSW MOTO-TORQUE home">
+        <span class="brand-block">BGSW</span><span class="brand-name">Moto-Torque</span>
+      </a>
+      <nav class="header-actions" aria-label="Primary">
+        <button class="button button-quiet" id="dealer-button" type="button">Dealer</button>
+        <button class="button button-quiet" id="reach-us-button" type="button">Reach Us</button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme"></button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero-strip" aria-labelledby="hero-title">
+      <p class="eyebrow">Test ride booking</p>
+      <h1 id="hero-title">Feel the Drive.<br>Book Your Test Ride.</h1>
+    </section>
+
+    <section class="trust-strip" aria-label="Ride safety">
+      <span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        Licensed riders
+      </span>
+      <span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 15a9 9 0 0 1 18 0v2H3z"/><path d="M12 6v9M3 17h18l-2 3H5z"/></svg>
+        Safety briefing included
+      </span>
+      <span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Insured test rides
+      </span>
+    </section>
+
+    <form id="booking-form" class="booking-panel" novalidate aria-labelledby="hero-title">
+      <fieldset class="form-step" id="vehicle-step">
+        <legend class="step-title"><span class="step-number">01</span> Vehicle selection</legend>
+        <div class="vehicle-grid">
+          <label class="field">Vehicle type
+            <select id="type-select" disabled><option value="">Loading...</option></select>
+          </label>
+          <label class="field">Brand
+            <select id="brand-select" disabled><option value="">Select brand</option></select>
+          </label>
+          <label class="field">Model
+            <select id="model-select" disabled><option value="">Select model</option></select>
+          </label>
+          <div class="field">
+            <label for="variant-select">Variant</label>
+            <select id="variant-select" disabled aria-describedby="variant-status"><option value="">Select variant</option></select>
+            <span id="variant-status" class="status-badge" hidden></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-step is-locked" id="date-step">
+        <legend class="step-title"><span class="step-number">02</span> Ride date</legend>
+        <label class="field date-field">Choose a date (next 7 days)
+          <input id="date-input" type="date" disabled>
+        </label>
+      </fieldset>
+
+      <fieldset class="form-step is-locked" id="slot-step">
+        <legend class="step-title"><span class="step-number">03</span> Time slot</legend>
+        <button id="slot-button" class="button button-secondary" type="button" disabled>Choose time slot</button>
+        <p id="slot-summary" class="selection-summary" aria-live="polite">No time selected</p>
+      </fieldset>
+
+      <section class="form-step is-locked" id="preview-step" aria-labelledby="preview-title">
+        <h2 class="step-title" id="preview-title"><span class="step-number">04</span> Ride preview</h2>
+        <dl id="preview" class="preview-grid" aria-live="polite"></dl>
+      </section>
+
+      <fieldset class="form-step is-locked" id="contact-step">
+        <legend class="step-title"><span class="step-number">05</span> Your details</legend>
+        <div class="contact-grid">
+          <label class="field">Email
+            <input id="email-input" type="email" autocomplete="email" placeholder="rider@example.com" maxlength="254" disabled aria-describedby="email-error">
+            <span id="email-error" class="field-error"></span>
+          </label>
+          <label class="field">Mobile number
+            <input id="mobile-input" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="9876543210" maxlength="10" disabled aria-describedby="mobile-error">
+            <span id="mobile-error" class="field-error"></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <p id="form-error" class="form-alert" role="alert" hidden></p>
+
+      <div class="form-actions">
+        <button id="reset-button" class="button button-ghost" type="button">Reset</button>
+        <button id="submit-button" class="button button-primary" type="submit" disabled>Book Test Ride</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Slot picker -->
+  <div class="modal-backdrop" id="slot-modal" role="dialog" aria-modal="true" aria-labelledby="slot-title" hidden>
+    <div class="modal slot-modal">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">&times;</button>
+      <p class="eyebrow" id="slot-date-label"></p>
+      <h2 id="slot-title">Choose a time slot</h2>
+      <div class="slot-legend" aria-hidden="true">
+        <span class="available">&#10003; Available</span>
+        <span class="unavailable">&#10005; Booked / Unavailable</span>
+      </div>
+      <div id="slot-grid" class="slot-grid" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- Reach us -->
+  <div class="modal-backdrop" id="reach-modal" role="dialog" aria-modal="true" aria-labelledby="reach-title" hidden>
+    <div class="modal">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">&times;</button>
+      <p class="eyebrow">Dealer contact</p>
+      <h2 id="reach-title">Reach Us</h2>
+      <p>For enquiries, cancellations or rescheduling, contact us.</p>
+      <dl class="contact-details">
+        <div><dt>Phone</dt><dd id="dealer-phone">Loading...</dd></div>
+        <div><dt>Email</dt><dd id="dealer-email">Loading...</dd></div>
+      </dl>
+      <button id="reschedule-button" class="button button-secondary" type="button">Reschedule</button>
+    </div>
+  </div>
+
+  <!-- Dealer PIN -->
+  <div class="modal-backdrop" id="pin-modal" role="dialog" aria-modal="true" aria-labelledby="pin-title" hidden>
+    <form class="modal" id="pin-form" novalidate>
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">&times;</button>
+      <p class="eyebrow">Restricted access</p>
+      <h2 id="pin-title">Dealer PIN</h2>
+      <label class="field">Enter security PIN
+        <input id="pin-input" type="password" inputmode="numeric" autocomplete="off" maxlength="8" aria-describedby="pin-error">
+        <span id="pin-error" class="field-error" role="alert"></span>
+      </label>
+      <button id="pin-submit" class="button button-primary" type="submit">Unlock Dashboard</button>
+    </form>
+  </div>
+
+  <!-- Success -->
+  <div class="modal-backdrop" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-title" hidden>
+    <div class="modal success-modal">
+      <div class="success-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <p class="eyebrow">Confirmed</p>
+      <h2 id="success-title">Booking Successful</h2>
+      <ul id="success-summary" class="success-summary"></ul>
+      <p id="booking-reference" class="booking-reference"></p>
+      <button class="button button-primary" type="button" data-close-modal>Done</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

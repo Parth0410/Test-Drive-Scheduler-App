@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Dealer Dashboard | BGSW MOTO-TORQUE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap">
+  <link rel="stylesheet" href="./assets/css/variables.css">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/layout.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/pages/dealer.css">
+  <script type="module" src="./assets/js/pages/dealer.page.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="BGSW MOTO-TORQUE home">
+        <span class="brand-block">BGSW</span><span class="brand-name">Moto-Torque</span>
+      </a>
+      <nav class="header-actions" aria-label="Primary">
+        <a class="button button-quiet" href="./index.html">Back to Booking</a>
+        <button class="button button-quiet" id="logout-button" type="button">Logout</button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme"></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hidden until the dealer session is confirmed. -->
+  <main class="dealer-shell" id="dashboard" hidden>
+    <div class="page-heading">
+      <div>
+        <p class="eyebrow">Operations</p>
+        <h1>Dealer Dashboard</h1>
+      </div>
+      <p id="today-label"></p>
+    </div>
+
+    <section class="summary-grid" aria-label="Booking summary">
+      <article class="summary-card accent-red"><p>Today's rides</p><strong id="count-today">0</strong><span>Scheduled today</span></article>
+      <article class="summary-card accent-blue"><p>Upcoming</p><strong id="count-upcoming">0</strong><span>Yet to ride</span></article>
+      <article class="summary-card accent-green"><p>Completed</p><strong id="count-completed">0</strong><span>Rides delivered</span></article>
+      <article class="summary-card"><p>Total</p><strong id="count-total">0</strong><span>All bookings</span></article>
+    </section>
+
+    <section class="dashboard-panel" aria-label="Bookings">
+      <div class="dashboard-toolbar">
+        <div class="tabs" role="tablist" aria-label="Booking status">
+          <button class="tab" id="tab-current" type="button" role="tab" aria-selected="true" aria-controls="bookings-region" data-status="Booked">Current Bookings</button>
+          <button class="tab" id="tab-history" type="button" role="tab" aria-selected="false" aria-controls="bookings-region" data-status="Completed">History</button>
+        </div>
+        <div class="filters">
+          <label class="field compact">Date
+            <input id="date-filter" type="date">
+            <button id="clear-date" class="clear-filter" type="button" aria-label="Clear date filter">&times;</button>
+          </label>
+          <label class="field compact">Search
+            <input id="search-filter" type="search" placeholder="Email, mobile or booking ID">
+          </label>
+        </div>
+      </div>
+
+      <div id="bookings-region" role="tabpanel" aria-labelledby="tab-current">
+        <div id="loading-state" class="loading-state"><span class="spinner" aria-hidden="true"></span> Loading bookings...</div>
+        <div id="empty-state" class="empty-state" hidden>No bookings found.</div>
+        <div class="table-wrap">
+          <table id="bookings-table" hidden>
+            <thead>
+              <tr>
+                <th scope="col">Booking ID</th>
+                <th scope="col">Customer Email</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Vehicle</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time Slot</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="bookings-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

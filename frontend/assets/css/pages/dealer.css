@@ -1,0 +1,91 @@
+/* Dealer dashboard */
+.page-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.page-heading h1 { margin: 0; font-size: clamp(2.2rem, 6vw, 3.7rem); line-height: 1; }
+.page-heading > p { margin: 0; color: var(--muted); }
+
+.summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
+
+.summary-card {
+  position: relative;
+  min-height: 130px;
+  padding: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform var(--transition);
+}
+
+.summary-card:hover { transform: translateY(-3px); }
+.summary-card::after { content: ""; position: absolute; inset: auto 0 0; height: 3px; background: var(--border); }
+.summary-card.accent-red::after { background: var(--accent); }
+.summary-card.accent-blue::after { background: var(--blue); }
+.summary-card.accent-green::after { background: var(--success); }
+.summary-card p { margin: 0; color: var(--muted); font-size: .78rem; text-transform: uppercase; }
+.summary-card strong { display: block; margin-top: 5px; font-family: var(--font-display); font-size: 2.8rem; line-height: 1.1; }
+.summary-card span { color: var(--muted); font-size: .72rem; }
+
+.dashboard-panel { margin-top: 22px; border: 1px solid var(--border); border-top: 3px solid var(--accent); background: var(--surface); box-shadow: var(--shadow); }
+.dashboard-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 18px; border-bottom: 1px solid var(--border); }
+
+.tabs { display: flex; gap: 4px; }
+
+.tab {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tab[aria-selected="true"] { border-color: var(--accent); color: var(--text); }
+
+.filters { display: flex; gap: 10px; }
+.field.compact { width: 220px; }
+.field.compact input { padding-right: 36px; }
+.clear-filter { position: absolute; right: 3px; bottom: 3px; width: 38px; height: 38px; border: 0; background: transparent; color: var(--muted); font-size: 1.1rem; cursor: pointer; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 14px 12px; border-bottom: 1px solid var(--border); font-size: .8rem; text-align: left; vertical-align: middle; }
+th { color: var(--muted); font-family: var(--font-display); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+tbody tr { transition: background var(--transition); }
+tbody tr:hover { background: var(--surface-2); }
+
+.status-pill { display: inline-block; padding: 4px 8px; border-radius: var(--radius); background: color-mix(in srgb, var(--blue), transparent 82%); color: #6ea4f0; font-weight: 600; }
+.status-pill.completed { background: color-mix(in srgb, var(--success), transparent 82%); color: var(--success); }
+html[data-theme="light"] .status-pill { color: var(--blue); }
+html[data-theme="light"] .status-pill.completed { color: #15803d; }
+
+.complete-button { min-height: 34px; padding: 0 12px; border: 1px solid var(--success); border-radius: var(--radius); background: transparent; color: var(--success); font-weight: 600; cursor: pointer; transition: background var(--transition); }
+.complete-button:hover:not(:disabled) { background: color-mix(in srgb, var(--success), transparent 85%); }
+.complete-button:disabled { border-color: var(--border); color: var(--muted); cursor: not-allowed; }
+
+@media (max-width: 900px) {
+  .summary-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Table becomes stacked cards on small screens. */
+@media (max-width: 760px) {
+  .dashboard-toolbar { flex-direction: column; align-items: stretch; }
+  .filters { flex-direction: column; }
+  .field.compact { width: 100%; }
+  .table-wrap { overflow: visible; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { display: none; }
+  tbody { padding: 12px; }
+  tbody tr { margin-bottom: 12px; border: 1px solid var(--border); background: var(--surface); }
+  td { display: grid; grid-template-columns: 110px 1fr; gap: 8px; word-break: break-word; }
+  td::before { content: attr(data-label); color: var(--muted); font-family: var(--font-display); font-weight: 700; text-transform: uppercase; }
+}
+
+@media (max-width: 480px) {
+  .page-heading { flex-direction: column; align-items: flex-start; }
+  .summary-card { min-height: 110px; padding: 14px; }
+  .summary-card strong { font-size: 2.2rem; }
+}

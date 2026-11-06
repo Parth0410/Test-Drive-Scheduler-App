@@ -1,0 +1,69 @@
+/* Header, logo and page containers shared by all pages. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg), transparent 8%);
+  backdrop-filter: blur(14px);
+}
+
+.header-inner {
+  width: min(1120px, calc(100% - 32px));
+  min-height: var(--header-height);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brand-block {
+  margin-right: 8px;
+  padding: 3px 8px 3px 10px;
+  transform: skew(-12deg);
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.15rem;
+}
+
+.brand-name { position: relative; font-size: clamp(.95rem, 3vw, 1.3rem); font-weight: 700; }
+
+.brand-name::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  transform: skew(-20deg);
+  background: var(--accent);
+}
+
+.page-shell { width: min(900px, calc(100% - 32px)); margin: 30px auto 70px; }
+.dealer-shell { width: min(1180px, calc(100% - 32px)); margin: 34px auto 70px; }
+
+@media (max-width: 760px) {
+  .header-inner { padding: 10px 0; }
+  .header-actions { gap: 4px; }
+}
+
+@media (max-width: 480px) {
+  .header-inner, .page-shell, .dealer-shell { width: calc(100% - 20px); }
+  .brand-name { font-size: .86rem; }
+  .brand-block { padding-inline: 5px; font-size: .9rem; }
+}

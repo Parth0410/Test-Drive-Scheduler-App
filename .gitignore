@@ -1,0 +1,15 @@
+# Secrets and local data
+backend/.env
+backend/data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,145 @@
+{
+  "vehicleTypes": [
+    {
+      "name": "Car",
+      "brands": [
+        {
+          "name": "Hyundai",
+          "models": [
+            { "name": "Creta", "variants": [
+              { "name": "E 1.5 Petrol", "available": true },
+              { "name": "SX 1.5 Diesel", "available": true },
+              { "name": "SX(O) 1.5 Turbo DCT", "available": false }
+            ]},
+            { "name": "Verna", "variants": [
+              { "name": "S 1.5 MPi", "available": true },
+              { "name": "SX(O) 1.5 Turbo", "available": true }
+            ]},
+            { "name": "Venue", "variants": [
+              { "name": "S(O) 1.2 Petrol", "available": true },
+              { "name": "SX 1.0 Turbo", "available": true },
+              { "name": "N Line N8", "available": false }
+            ]}
+          ]
+        },
+        {
+          "name": "Tata Motors",
+          "models": [
+            { "name": "Nexon", "variants": [
+              { "name": "Smart", "available": true },
+              { "name": "Creative Plus S", "available": true },
+              { "name": "Fearless Plus PS", "available": true }
+            ]},
+            { "name": "Harrier", "variants": [
+              { "name": "Adventure", "available": true },
+              { "name": "Fearless Plus", "available": false }
+            ]},
+            { "name": "Punch EV", "variants": [
+              { "name": "Adventure", "available": true },
+              { "name": "Empowered Plus LR", "available": true }
+            ]}
+          ]
+        },
+        {
+          "name": "Mahindra",
+          "models": [
+            { "name": "XUV700", "variants": [
+              { "name": "MX", "available": true },
+              { "name": "AX5", "available": true },
+              { "name": "AX7 L", "available": true }
+            ]},
+            { "name": "Thar", "variants": [
+              { "name": "LX Hard Top", "available": true },
+              { "name": "Earth Edition", "available": false }
+            ]},
+            { "name": "Scorpio-N", "variants": [
+              { "name": "Z4", "available": true },
+              { "name": "Z8 L", "available": true }
+            ]},
+            { "name": "XUV 3XO", "variants": [
+              { "name": "MX2", "available": true },
+              { "name": "AX7 L", "available": true }
+            ]}
+          ]
+        },
+        {
+          "name": "BMW",
+          "models": [
+            { "name": "3 Series Gran Limousine", "variants": [
+              { "name": "330Li M Sport", "available": true },
+              { "name": "M340i xDrive", "available": true }
+            ]},
+            { "name": "X1", "variants": [
+              { "name": "sDrive18i M Sport", "available": true },
+              { "name": "sDrive18d M Sport", "available": false }
+            ]},
+            { "name": "X5", "variants": [
+              { "name": "xDrive40i M Sport", "available": true },
+              { "name": "xDrive30d M Sport", "available": true },
+              { "name": "xDrive40i xLine", "available": true }
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bike",
+      "brands": [
+        {
+          "name": "Royal Enfield",
+          "models": [
+            { "name": "Classic 350", "variants": [
+              { "name": "Heritage", "available": true },
+              { "name": "Signals", "available": true },
+              { "name": "Chrome", "available": false }
+            ]},
+            { "name": "Himalayan 450", "variants": [
+              { "name": "Base", "available": true },
+              { "name": "Pass", "available": true },
+              { "name": "Summit", "available": true }
+            ]},
+            { "name": "Interceptor 650", "variants": [
+              { "name": "Standard", "available": true },
+              { "name": "Black Ray", "available": true }
+            ]}
+          ]
+        },
+        {
+          "name": "KTM",
+          "models": [
+            { "name": "Duke 390", "variants": [
+              { "name": "Standard", "available": true },
+              { "name": "Dark Galvano", "available": true }
+            ]},
+            { "name": "RC 390", "variants": [
+              { "name": "Standard", "available": true },
+              { "name": "GP Edition", "available": false }
+            ]},
+            { "name": "390 Adventure", "variants": [
+              { "name": "X", "available": true },
+              { "name": "Standard", "available": true },
+              { "name": "Enduro R", "available": true }
+            ]}
+          ]
+        },
+        {
+          "name": "Kawasaki",
+          "models": [
+            { "name": "Ninja 500", "variants": [
+              { "name": "Standard", "available": true },
+              { "name": "SE", "available": true }
+            ]},
+            { "name": "Z900", "variants": [
+              { "name": "Standard", "available": true },
+              { "name": "Metallic Spark Black", "available": true }
+            ]},
+            { "name": "Versys 650", "variants": [
+              { "name": "Standard", "available": true },
+              { "name": "Tourer Plus", "available": false }
+            ]}
+          ]
+        }
+      ]
+    }
+  ]
+}

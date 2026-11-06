@@ -1,0 +1,174 @@
+/* ---------- Buttons ---------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 9px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  transition: transform var(--transition), background var(--transition), border-color var(--transition), opacity var(--transition);
+}
+
+.button:hover:not(:disabled) { transform: translateY(-2px); }
+.button:disabled { cursor: not-allowed; opacity: .42; }
+.button-primary { background: var(--accent); color: #fff; }
+.button-primary:hover:not(:disabled) { background: #c30500; }
+.button-secondary { border-color: var(--accent); background: transparent; }
+.button-ghost { border-color: var(--border); background: transparent; }
+.button-quiet { min-height: 36px; padding: 7px 12px; background: transparent; clip-path: none; }
+.button-quiet:hover { color: var(--accent); }
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.theme-toggle:hover { transform: rotate(20deg); border-color: var(--accent); }
+
+/* ---------- Form fields ---------- */
+.field { position: relative; display: flex; flex-direction: column; gap: 8px; color: var(--muted); font-size: .78rem; font-weight: 600; }
+
+.field input,
+.field select {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font-size: .9rem;
+  transition: border-color var(--transition);
+}
+
+.field input:hover:not(:disabled),
+.field select:hover:not(:disabled) { border-color: var(--muted); }
+
+.field input:disabled,
+.field select:disabled { cursor: not-allowed; opacity: .45; }
+
+.field input[aria-invalid="true"] { border-color: var(--danger); }
+
+.field-error { min-height: 16px; color: var(--danger); font-size: .72rem; font-weight: 500; }
+
+.status-badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: var(--radius);
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.status-badge.available { background: color-mix(in srgb, var(--success), transparent 82%); color: var(--success); }
+.status-badge.unavailable { background: color-mix(in srgb, var(--danger), transparent 82%); color: var(--danger); }
+
+.form-alert {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--danger);
+  background: color-mix(in srgb, var(--danger), transparent 90%);
+  color: var(--danger);
+}
+
+/* ---------- Modals ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, .72);
+  backdrop-filter: blur(8px);
+  animation: fade-in .2s ease both;
+}
+
+.modal {
+  position: relative;
+  width: min(520px, 100%);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  animation: modal-in .25s ease both;
+}
+
+.modal h2 { margin: 0 0 16px; font-size: 2rem; line-height: 1; }
+.modal .button { margin-top: 18px; }
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.modal-close:hover { color: var(--accent); }
+
+/* ---------- Toast & loaders ---------- */
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 150;
+  max-width: calc(100% - 40px);
+  padding: 13px 18px;
+  border-left: 3px solid var(--blue);
+  background: var(--surface-2);
+  box-shadow: var(--shadow);
+  animation: reveal .25s ease both;
+}
+
+.toast.error { border-color: var(--danger); }
+.toast.success { border-color: var(--success); }
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  vertical-align: middle;
+  animation: spin .8s linear infinite;
+}
+
+.loading-state,
+.empty-state { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 40px 16px; color: var(--muted); text-align: center; }
+
+@media (max-width: 480px) {
+  .modal { padding: 24px 18px; }
+}
